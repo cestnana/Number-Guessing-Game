@@ -1,3 +1,8 @@
+Flowchart link: 
+https://drive.google.com/file/d/1nOCvexfJBKDHkSTUwkYpV6ML1BDaBWVN/view?usp=sharing
+
+-
+
 Core Features
 * Implement random number generation
 * Accept user input and convert to a number
