@@ -88,10 +88,11 @@ while attempt_left > 0:
     guess_number = (input("Make a guess: "))
 
     try:
-      num = int(guess_number)
-      # print("The number you entered is:", num)
-      break  # Input correctly and jump out of the cycle
+      value = int(guess_number)
+      print("The value you entered is:", value)
+      break  # Input correctly will exit the loop
     except ValueError:
+      # catch the error and handle it
       print("What you entered is not a whole number. Please re-enter it. (e.g. 51)")
         
   # # get user's guessing number
