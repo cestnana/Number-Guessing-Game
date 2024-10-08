@@ -32,12 +32,18 @@ is_first_attempt = True
 # initialize game mode 
 game_mode = "not choose yet"
 
+# flag/result of checking user input is number
+is_number = True
 
 # function declarations: 
 
 # display current status
 def current_status(): 
   print(f"You have {attempt_left} attempts remaining to guess the number.")
+  
+# Input Validation: 
+def check_is_number(value):
+  return isinstance(value, (int, float))
 
 # main logic: 
 
@@ -74,7 +80,21 @@ while attempt_left > 0:
   # display current status
   current_status()
   # get user's guessing number
-  guess_number = input("Make a guess: ")
+  guess_number = int(input("Make a guess: "))
+  # ! this may cause error when user input a really str
+  # ! how to handle this ?
+  
+  # check user input is number
+  is_number = check_is_number(guess_number)
+  
+  # *input validation*
+  while is_number == False:
+    print("Please type a number. (e.g. 50)")
+    guess_number = input("Make a guess: ")
+    is_number = check_is_number(guess_number)
+    if is_number == True:
+      break
+  
   # user attempts + 1
   attempt_count += 1
   # update attempts left
