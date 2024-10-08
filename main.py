@@ -49,7 +49,7 @@ def check_is_number(value):
 
 print(art.logo)
 print("Welcome to the Number Guessing Game!")
-print("I'm thinking of a number between 1 and 100.")
+print("I'm thinking of a whole number between 1 and 100.")
 game_mode = input("Choose a difficulty. Type 'e' for easy or 'h' for 'hard': ")
 
 # determine difficulty, 'easy mode' as default
@@ -79,35 +79,50 @@ while attempt_left > 0:
   
   # display current status
   current_status()
-  # get user's guessing number
-  guess_number = int(input("Make a guess: "))
+  
+  # check user input is number
+  while True:
+    # user_input = input("Please enter a number:")
+    
+    # get user's guessing number
+    guess_number = (input("Make a guess: "))
+
+    try:
+      num = int(guess_number)
+      # print("The number you entered is:", num)
+      break  # Input correctly and jump out of the cycle
+    except ValueError:
+      print("What you entered is not a whole number. Please re-enter it. (e.g. 51)")
+        
+  # # get user's guessing number
+  # guess_number = int(input("Make a guess: "))
   # ! this may cause error when user input a really str
   # ! how to handle this ?
   
   # check user input is number
-  is_number = check_is_number(guess_number)
+  # is_number = check_is_number(guess_number)
   
   # *input validation*
-  while is_number == False:
-    print("Please type a number. (e.g. 50)")
-    guess_number = input("Make a guess: ")
-    is_number = check_is_number(guess_number)
-    if is_number == True:
-      break
+  # while is_number == False:
+  #   print("Please type a number. (e.g. 50)")
+  #   guess_number = input("Make a guess: ")
+  #   is_number = check_is_number(guess_number)
+  #   if is_number == True:
+  #     break
   
   # user attempts + 1
   attempt_count += 1
   # update attempts left
   attempt_left = total_attempts - attempt_count
   
-  if int(guess_number) == int(target_number): 
+  if int(guess_number) == target_number: 
     current_status()
     print(f"You got it! The answer was {guess_number}.")
     break
-  elif int(guess_number) > int(target_number):
+  elif int(guess_number) > target_number:
     print("Too high.")
     is_first_attempt = False
-  elif int(guess_number) < int(target_number):
+  elif int(guess_number) < target_number:
     print("Too low.")
     is_first_attempt = False
   else: 
