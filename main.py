@@ -35,7 +35,7 @@ is_number = True
 
 # display current status
 def current_status(): 
-  print(f"You have {attempt_left}/{total_attempts} attempts remaining to guess the number.")
+  print(f"You have {attempt_left}" + " /" + f"{total_attempts} attempts remaining to guess the number.")
   
 # display initial status
 def initial_status(): 
@@ -103,3 +103,5 @@ while attempt_left > 0:
 # the point user run out of attempts: 
 if attempt_left <= 0 and guess_number != target_number:
   print("You've run out of guesses, you lose.")
+  print(f"The correct number was {target_number}.")
+  
